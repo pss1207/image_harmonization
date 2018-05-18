@@ -1,6 +1,7 @@
 # Image Harmonization
 
 PyTorch implementation for image harmonization. 
+![alt text](https://github.com/pss1207/image_harmonization/blob/master/test_results.png)
 
 ## Prerequisites
 - Pytorch
@@ -27,7 +28,7 @@ pip install dominate
 ```bash
 python train.py --dataroot ./datasets 
 ```
-- To view training results and loss plots, run `python -m visdom.server` and click the URL http://localhost:8097. To see more intermediate results, check out `./checkpoints/web/index.html`
+- To view training results, run `python -m visdom.server` and click the URL http://localhost:8097. To see more intermediate results, check out `./checkpoints/web/index.html`
 
 ### Test
 - Test the model:
@@ -36,5 +37,6 @@ python train.py --dataroot ./datasets
 python test.py --dataroot ./datasets
 ```
 The test results will be saved to a html file here: `./results/test_latest/index.html`.
+
 
 
