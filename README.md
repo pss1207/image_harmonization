@@ -40,7 +40,6 @@ python train.py --dataroot ./datasets
 ### Test
 - Test the model:
 ```bash
-#!./scripts/test_cyclegan.sh
 python test.py --dataroot ./datasets
 ```
 The test results will be saved to a html file here: `./results/test_latest/index.html`.
