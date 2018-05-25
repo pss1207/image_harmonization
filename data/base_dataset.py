@@ -117,5 +117,3 @@ def get_transform(opt):
 
     return transforms.Compose([rescale, crop, to_tensor, norm])
 
-
-

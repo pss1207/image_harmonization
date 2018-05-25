@@ -51,6 +51,15 @@ class Model(BaseModel):
         self.input_array = input_array
         self.target_image = target_image
 
+    def set_input_eval(self, input):
+        input_image = input[0]
+        input_mask = input[1]
+        input_array = torch.cat((input_image, input_mask), dim=1)
+        if len(self.gpu_ids) > 0:
+            input_array = input_array.cuda(self.gpu_ids[0], async=True)
+
+        self.input_array = input_array
+
 
     def forward(self):
         self.input_array = Variable(self.input_array)
@@ -67,6 +76,14 @@ class Model(BaseModel):
             self.target_image = Variable(self.target_image)
             self.input_image = self.input_array[:, :3, :, :]
             self.input_mask = self.input_array[:, 3, :, :]
+
+    def eval(self):
+        with torch.no_grad():
+            self.input_array = Variable(self.input_array)
+            self.prediction = self.net(self.input_array)
+            self.input_image = self.input_array[:, :3, :, :]
+            self.input_mask = self.input_array[:, 3, :, :]
+        return self.prediction
 
 
     def backward(self):

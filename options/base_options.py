@@ -10,7 +10,7 @@ class BaseOptions():
         self.initialized = False
 
     def initialize(self):
-        self.parser.add_argument('--dataroot', required=True, help='path to images')
+        self.parser.add_argument('--dataroot', default='', help='path to images')
         self.parser.add_argument('--batchSize', type=int, default=2, help='input batch size')
         self.parser.add_argument('--loadSize', type=int, default=512, help='scale images to this size')
         self.parser.add_argument('--fineSize', type=int, default=512, help='then crop to this size')
